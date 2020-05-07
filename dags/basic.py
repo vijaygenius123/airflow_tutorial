@@ -25,3 +25,12 @@ t1 = BashOperator(
     bash_command='date',
     dag=dag,
 )
+
+t2 = BashOperator(
+    task_id='sleep',
+    depends_on_past=False,
+    bash_command='sleep 5',
+    dag=dag,
+)
+
+t1 >> t2
